@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Transactions;
 using System.Xml.Linq;
 
@@ -122,7 +123,7 @@ namespace HM_L5
             Console.WriteLine($"Уважаемый {userName}, {addTransactionText}");
             string newTransaction = Console.ReadLine() ?? "";
             transactions.Add(newTransaction);
-            Console.WriteLine("Ваша транзакция добавлена.");
+            Console.WriteLine($"Ваша транзакция \"{newTransaction}\" добавлена.");
         }
 
         static void ShowTransactions()
@@ -179,8 +180,9 @@ namespace HM_L5
                 }
 
                 index--;
+                string removedTransaction = transactions[index];
                 transactions.RemoveAt(index);
-                Console.WriteLine("Транзакция удалена.");
+                Console.WriteLine($"Транзакция {index + 1}. {removedTransaction} удалена.");
 
                 break;
             }
